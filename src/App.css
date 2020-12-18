@@ -35,3 +35,11 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.label-text{
+  width: 115px;
+  display: inline-block;
+}
+.align-center{
+  margin-left: 25%;
+  margin-top: 14%;
+}
