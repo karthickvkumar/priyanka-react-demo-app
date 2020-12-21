@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './pages/login';
 import NewsList from './pages/news-list';
+import HomePage from './pages/home';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Login}></Route>
           <Route path="/news" component={NewsList}></Route>
+          <Route path="/home" component={HomePage}></Route>
         </Switch>
       </BrowserRouter>
     );

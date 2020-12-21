@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { NavLink } from 'react-router-dom'
 
 class Login extends Component {
@@ -6,7 +7,8 @@ class Login extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
   }
 
@@ -17,7 +19,21 @@ class Login extends Component {
   }
 
   onLoginMethod(){
-    console.log(this.state)
+    this.setState({
+      error : false
+    });
+    const url = "https://reqres.in/api/login";
+    axios.post(url, this.state)
+          .then((response) => {
+            console.log(response)
+            this.props.history.push('/home')
+          })
+          .catch((error) => {
+            console.log(error)
+            this.setState({
+              error : true
+            });
+          })
   }
 
   render() {
@@ -31,6 +47,7 @@ class Login extends Component {
         <input type="password" name="password" placeholder="Enter your password" onChange={this.onHandleInput}/>
         <br></br>
         <button onClick={() => this.onLoginMethod()}>Login</button>
+        {this.state.error && <h3 className="error-msg">Invalid Username or Passsord</h3>}
         {/* <NavLink to={{pathname: '/news'}}>Go To News Page</NavLink> */}
       </div>
     );
